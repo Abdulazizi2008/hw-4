@@ -4,7 +4,7 @@ function App() {
   const [todos, setTodos] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const base_url = import.meta.env.VITE_BASE_URL;
+  const base_url = "https://server-6g6b.onrender.com";
 
   useEffect(() => {
     async function getTodos() {
@@ -31,7 +31,7 @@ function App() {
           <div className="bg-[#1D1825] w-[583px] rounded-[20px] py-[50px] px-[65px]">
             <div className="text-white text-[16px] font-[400]">Task to do </div>
             {loading ? (
-              <p>Loading...</p>
+              <h1 className="text-white">Loading...</h1>
             ) : (
               todos.map((todo) => {
                 return (
