@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-
+import api from "./api";
 function App() {
   const [todos, setTodos] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const base_url = "https://server-6g6b.onrender.com";
+  const base_url = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     async function getTodos() {
       try {
-        const response = await fetch(`${base_url}/todos`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        setTodos(data);
+        // const response = await fetch(`${base_url}/todos`);
+        // if (!response.ok) {
+        //   throw new Error(`HTTP error! status: ${response.status}`);
+        // }
+        // const data = await response.json();
+        const response = await api("/todos");
+        setTodos(response.data);
       } catch (error) {
         console.error(error);
       } finally {
